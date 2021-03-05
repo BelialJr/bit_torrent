@@ -6,6 +6,9 @@ public class ConnectionHandler
     private BitTracker bitTrakcer;
     private Socket clientSocket;
     private String userToken;
+
+
+
     private InputStream inputStream;
     private OutputStream outputStream;
 
@@ -21,6 +24,7 @@ public class ConnectionHandler
         BufferedReader br = new BufferedReader(new InputStreamReader(this.inputStream));
         while (!clientSocket.isClosed())
         {
+
             String line = br.readLine();
             String[] str = line.split(" ");
             if (str[0].equals("/share")){
@@ -30,6 +34,14 @@ public class ConnectionHandler
                 String checkSum = str[3];
                 bitTrakcer.share_command(userToken,fileName,fileSize,checkSum);
             }
+            if (str[0].equals("/download")) {
+
+            }
+            if(str[0].equals("/quit")){
+                bitTrakcer.disconnectUser(userToken);
+                break;
+
+        }
         }
     }
 
@@ -41,5 +53,8 @@ public class ConnectionHandler
         this.userToken = userToken;
     }
 
+    public Socket getClientSocket() {
+        return clientSocket;
+    }
 
 }

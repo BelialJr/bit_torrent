@@ -12,7 +12,9 @@ public class BitTracker
     public static final String HOST = "127.0.0.1";
     private static ServerSocket openedSocket;
 
-    private List<INFO> listINFO;
+    private List<UserINFO> listINFO;  // Current Users Info
+    private List<FileINFO> filesINFO; // Segments Checksum
+
     private List<ConnectionHandler>  activeConnections;
     private ConnectionHandler currentConnection;
 
@@ -25,6 +27,7 @@ public class BitTracker
     private BitTracker()
     {
         listINFO = new ArrayList<>();
+        filesINFO = new ArrayList<>();
         activeConnections = new ArrayList<>();
         isAlive = true;
         startReadingInput();
@@ -45,13 +48,13 @@ public class BitTracker
     private void startReadingInputThread() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (isAlive){
-            String str = br.readLine();
-            switch (str){
-                case "/list":
-                    System.out.println(list_command());
-                    break;
-                default:
-                    break;
+            String line =  br.readLine();
+            String[] str =line.split(" ");
+            if (str[0].equals("/list")) {
+                System.out.println(list_command());
+            }
+            if (str[0].equals("/file")) {
+              //  System.out.println(list_command());
             }
         }
     }
@@ -83,6 +86,7 @@ public class BitTracker
 
     private void handleNewUser(int port, Socket clientSocket, String userToken)
     {
+
         new Thread( () ->{
             try
             {
@@ -92,22 +96,44 @@ public class BitTracker
             }
             catch (NullPointerException | IOException e)
             {
-                INFO INFOtoRemove = listINFO.stream().filter(e1->e1.getToken().equals(currentConnection.getUserToken())).findFirst().get();
+                UserINFO INFOtoRemove = listINFO.stream().filter(e1->e1.getToken().equals(currentConnection.getUserToken())).findFirst().get();
                 listINFO.remove(INFOtoRemove);
-                updateListInfo();
                 activeConnections.remove(currentConnection);
+                System.out.println("[SERVER] : TOKEN["+ currentConnection.getUserToken()+"]: "+" : DISCONNECTED" );
+                updateListSeeds();
+                e.printStackTrace();
 
             }
         }).start();
 
     }
+    public void disconnectUser(String userToken){
+        UserINFO INFOtoRemove = listINFO.stream().filter(e1->e1.getToken().equals(userToken)).findFirst().get();
+        listINFO.remove(INFOtoRemove);
+        activeConnections.remove(currentConnection);
+        System.out.println("[SERVER] : TOKEN["+ userToken+"]: "+" : DISCONNECTED" );
+        updateListSeeds();
+        System.out.println(list_command());
+    }
 
-    private void updateListInfo(){//recount seeds
 
+    private void updateListSeeds(){//recount seeds
+        ArrayList<String> combined = new ArrayList<>();
+        for(UserINFO var:listINFO) {
+            combined.addAll(var.getCheckSums());
+        }
+        for(UserINFO var:listINFO) {
+            int index = 0;
+            for (String checkSum : var.getCheckSums()){
+                int seeds = Collections.frequency(combined,checkSum);
+                var.getSeedsAvailable().add(index,seeds);
+                index++;
+            }
+        }
     }
 
     private void addNewUser(int port, Socket clientSocket,String userToken) {
-        listINFO.add(new INFO(userToken,port,clientSocket.getLocalAddress().toString().replace("/","")+":"+clientSocket.getPort()));
+        listINFO.add(new UserINFO(userToken,port,clientSocket.getLocalAddress().toString().replace("/","")+":"+clientSocket.getPort()));
     }
 
     private Integer generatePort()
@@ -128,10 +154,12 @@ public class BitTracker
     }
 
     public void share_command(String userToken, String fileName, String fileSize, String checkSum){//recount seeds
-        INFO obj = listINFO.stream().filter(e->e.getToken().equals(userToken)).findFirst().get();
-        obj.addNewFIle(fileName,fileSize,checkSum);
-        updateListInfo();
-        System.out.println(list_command());
+        try {
+            UserINFO obj = listINFO.stream().filter(e -> e.getToken().equals(userToken)).findFirst().get();
+            obj.addNewFIle(fileName, fileSize, checkSum);
+            updateListSeeds();
+            System.out.println(list_command());
+        }catch (java.util.NoSuchElementException e){}
     }
 
 
@@ -150,7 +178,7 @@ public class BitTracker
         return stringBuilder.toString();
     }
 
-    public String list_command() {
+    public  String list_command() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n"+getSymbols(152,'_')+"\n");
         sb.append(String.format("%-9s",  "| TOKEN "));
@@ -158,30 +186,23 @@ public class BitTracker
         sb.append(String.format("%-22s", "| USER_ADDRESS " ));
         sb.append(String.format("%-20s", "| FILE_NAME "));
         sb.append(String.format("%-15s", "| FILE_SIZE "));
-        sb.append(String.format("%-34s", "| CHECK_SUM "));
+        sb.append(String.format("%-42s", "| CHECK_SUM "));
         sb.append(String.format("%-20s", "| SEEDS_AVAILABLE"));
         sb.append(String.format("%-20s", "| PEERS_AVAILABLE|"));
         sb.append( "\n"+ getSymbols(152,'‾')+"\n");
-        for(INFO var : listINFO){
-//            sb.append(String.format("%-9s",  "| " + var.getToken()) );
-//            sb.append(String.format("%-14s", "| " + var.getOpenedPort()));
-//            sb.append(String.format("%-22s", "| " + var.getUserAddress()));
-//            sb.append(String.format("%-15s", "| " + var.getFileNames()));
-//            sb.append(String.format("%-15s", "| " + var.getFileSizes()));
-//            sb.append(String.format("%-32s", "| " + var.getCheckSums()));
-//            sb.append(String.format("%-20s", "| " + var.getSeedsAvailable()));
-//            sb.append(String.format("%-20s", "| " + var.getPeersAvailable()) + "\n");
-
+        LinkedList<UserINFO> temp = new LinkedList<>();
+        temp.addAll(listINFO);
+        for(UserINFO var : temp){
             if(!(var.getCheckSums().size() > 0)){
-                sb.append(getLineInfo(var.getToken(),var.getOpenedPort(),var.getUserAddress(),"","","","",""));
+                sb.append(getLineInfo(var.getToken(),var.getOpenedPort(),var.getUserAddress(),"","","",0,0));
             }
             else
             {
                 for (int i = 0; i <var.getCheckSums().size() ; i++) {
                     if(i == 0)
-                        sb.append(getLineInfo(var.getToken(),var.getOpenedPort(),var.getUserAddress(),var.getFileNames().get(i),var.getFileSizes().get(i),var.getCheckSums().get(i),"",""));
+                        sb.append(getLineInfo(var.getToken(),var.getOpenedPort(),var.getUserAddress(),var.getFileNames().get(i),var.getFileSizes().get(i),var.getCheckSums().get(i),var.getSeedsAvailable().get(i),var.getPeersAvailable().get(i)));
                     else
-                        sb.append(getLineInfo("","","",var.getFileNames().get(i),var.getFileSizes().get(i),var.getCheckSums().get(i),"","" ));
+                        sb.append(getLineInfo("","","",var.getFileNames().get(i),var.getFileSizes().get(i),var.getCheckSums().get(i),var.getSeedsAvailable().get(i),var.getPeersAvailable().get(i) ));
                 }
             }
         }
@@ -189,14 +210,14 @@ public class BitTracker
         sb.append(getSymbols(152,'-')+"\n");
         return sb.toString();
     }
-    private String getLineInfo(String token,String port,String address,String fileName,String fileSize,String checkSum,String seeds,String peers){
+    private String getLineInfo(String token,String port,String address,String fileName,String fileSize,String checkSum,int seeds,int peers){
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%-9s",  "| " + token));
         sb.append(String.format("%-14s", "| " + port));
         sb.append(String.format("%-22s", "| " + address));
         sb.append(String.format("%-20s", "| " + fileName));
         sb.append(String.format("%-15s", "| " + fileSize));
-        sb.append(String.format("%-34s", "| " + checkSum));
+        sb.append(String.format("%-42s", "| " + checkSum));
         sb.append(String.format("%-20s", "| " +  seeds));
         sb.append(String.format("%-20s", "| " +  peers) + "\n");
 

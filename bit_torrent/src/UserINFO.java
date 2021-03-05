@@ -2,7 +2,7 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.List;
 
-public class INFO
+public class UserINFO
 {
     private String Token;
     private int openedPort ;
@@ -10,19 +10,21 @@ public class INFO
     private LinkedList<String> fileNameList;
     private LinkedList<String> fileSizeList;
     private LinkedList<String> checkSums;
-    private String seedsAvailable;
-    private String peersAvailable;
+    private LinkedList<Integer> seedsAvailable ;
+    private LinkedList<Integer> peersAvailable;
 
 
 
 
-    public INFO(String token, int openedPort, String userAddress) {
+    public UserINFO(String token, int openedPort, String userAddress) {
         this.Token = token;
         this.openedPort = openedPort;
         this.userAddress = userAddress;
         this.fileNameList = new LinkedList<>();
         this.fileSizeList = new LinkedList<>();
         this.checkSums    = new LinkedList<>();
+        this.seedsAvailable =  new LinkedList<>();
+        this.peersAvailable = new LinkedList<>();
     }
 
     public String getToken() {
@@ -53,21 +55,15 @@ public class INFO
     }
 
 
-    public String getSeedsAvailable() {
+    public LinkedList<Integer> getSeedsAvailable() {
         return seedsAvailable;
     }
 
-    public void setSeedsAvailable(String seedsAvailable) {
-        this.seedsAvailable = seedsAvailable;
-    }
 
-    public String getPeersAvailable() {
+    public LinkedList<Integer> getPeersAvailable() {
         return peersAvailable;
     }
 
-    public void setPeersAvailable(String peersAvailable) {
-        this.peersAvailable = peersAvailable;
-    }
 
 
     public List<String> getFileNames() {
@@ -86,5 +82,7 @@ public class INFO
         this.fileNameList.add(fileName);
         this.fileSizeList.add(fileSize);
         this.checkSums.   add(checkSum);
+        this.peersAvailable.add(0);
+        this.seedsAvailable.add(0);
     }
 }

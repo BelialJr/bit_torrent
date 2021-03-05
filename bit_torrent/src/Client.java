@@ -9,11 +9,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 
 public class Client {
-    private final String downloadFrom = "usersFiles/";
-    private final String downloadTo = "receivedFiles/";
+    private final String downloadFrom = "Files/usersFiles/";
+    private final String downloadTo = "Files/receivedFiles/";
+    private final String torrentFilePath = "Files/receivedFiles/";
     private String host;
     private int port;
-    private Socket socket;
+    public Socket socket;
     private InputStream is;
     private OutputStream os;
 
@@ -25,10 +26,16 @@ public class Client {
         this.os = socket.getOutputStream();
     }
 
-    public void share_FIle(String filename){
+    public void share_FIle(String filename,boolean createTorrentFile){
         String fileSize = getFileSize(filename);
         String checkSum = getMd5(filename);
         send("/share " + filename +" " + fileSize+ " " + checkSum);
+        if(createTorrentFile)
+            createTorrentFile();
+    }
+
+    private void createTorrentFile(){
+
     }
 
     private void send(String string){
@@ -50,7 +57,7 @@ public class Client {
     public  String getMd5(String filename) {
         try {
             InputStream is = Files.newInputStream(Paths.get(downloadFrom+filename));
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
             DigestInputStream dis = new DigestInputStream(is, md);
             dis.readAllBytes();
             dis.close();
@@ -59,7 +66,7 @@ public class Client {
             BigInteger bigInt = new BigInteger(1, raw);
             StringBuilder hash = new StringBuilder(bigInt.toString(16));
 
-            while (hash.length() < 32) {
+            while (hash.length() < 40 ) {
                 hash.insert(0, '0');
             }
             return hash.toString();
@@ -72,6 +79,16 @@ public class Client {
         return (int) file.length() / 1024 + "kb";
     }
 
+    public void disconnect(){
+        send("/quit");
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-
+    public void download(String checksum,boolean Debug, int StopAfterSegments) {
+        send("/download "  +checksum);
+    }
 }
