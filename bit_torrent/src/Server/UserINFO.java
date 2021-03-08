@@ -1,4 +1,6 @@
-import java.net.Socket;
+package Server;
+
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -6,6 +8,7 @@ public class UserINFO
 {
     private String Token;
     private int openedPort ;
+    private int downloadPort;
     private String userAddress;
     private LinkedList<String> fileNameList;
     private LinkedList<String> fileSizeList;
@@ -25,6 +28,18 @@ public class UserINFO
         this.checkSums    = new LinkedList<>();
         this.seedsAvailable =  new LinkedList<>();
         this.peersAvailable = new LinkedList<>();
+    }
+
+    public String getHost(){
+        return  userAddress.split(":")[0];
+    }
+
+    public String getDownloadPort() {
+        return String.valueOf(downloadPort);
+    }
+
+    public void setDownloadPort(int downloadPort) {
+        this.downloadPort = downloadPort;
     }
 
     public String getToken() {

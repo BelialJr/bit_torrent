@@ -3,14 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="1707fd29-ae9f-429a-8967-4cd0144580d5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BitTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BitTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConnectionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/INFO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserINFO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/torrentFiles/libssh.torrent.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BitTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/BitTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ConnectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileINFO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/FileINFO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserINFO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/UserINFO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usersfiles/libssh2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Files/usersfiles/libssh2.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usersfiles/libssh22.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Files/usersfiles/libssh22.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usersfiles/memreduct.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Files/usersfiles/memreduct.exe" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,13 +18,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/bit_torrent$main.ic" NAME="main Coverage Results" MODIFIED="1615241130566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="493">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,10 +36,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Client.java">
+        <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" column="40" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="40" />
+            <state relative-caret-position="-159">
+              <caret line="159" column="156" lean-forward="true" selection-start-line="159" selection-start-column="156" selection-end-line="159" selection-end-column="156" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6790#6791#0" expanded="true" />
+                <element signature="e#6846#6847#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/ClientP2P.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2754">
+              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Client/MyFile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,44 +71,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/UserINFO.java">
+        <entry file="file://$PROJECT_DIR$/src/Client/Crypto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#950#951#0" expanded="true" />
-                <element signature="e#979#980#0" expanded="true" />
-                <element signature="e#1016#1017#0" expanded="true" />
-                <element signature="e#1065#1066#0" expanded="true" />
-                <element signature="e#1105#1106#0" expanded="true" />
-                <element signature="e#1138#1139#0" expanded="true" />
-                <element signature="e#1187#1188#0" expanded="true" />
-                <element signature="e#1231#1232#0" expanded="true" />
-                <element signature="e#1269#1270#0" expanded="true" />
-                <element signature="e#1303#1304#0" expanded="true" />
-                <element signature="e#1357#1358#0" expanded="true" />
-                <element signature="e#1403#1404#0" expanded="true" />
-                <element signature="e#1458#1459#0" expanded="true" />
-                <element signature="e#1495#1496#0" expanded="true" />
-                <element signature="e#1550#1551#0" expanded="true" />
-                <element signature="e#1587#1588#0" expanded="true" />
-                <element signature="e#1631#1632#0" expanded="true" />
-                <element signature="e#1666#1667#0" expanded="true" />
-                <element signature="e#1708#1709#0" expanded="true" />
-                <element signature="e#1743#1744#0" expanded="true" />
-                <element signature="e#1785#1786#0" expanded="true" />
-                <element signature="e#1817#1818#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BitTracker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="92" column="33" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="33" />
+            <state relative-caret-position="135">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,28 +82,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FileINFO.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Client/FileINFO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="375">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1547#1548#0" expanded="true" />
-                <element signature="e#1579#1580#0" expanded="true" />
-                <element signature="e#1629#1630#0" expanded="true" />
-                <element signature="e#1671#1672#0" expanded="true" />
-                <element signature="e#1710#1711#0" expanded="true" />
-                <element signature="e#1745#1746#0" expanded="true" />
+                <element signature="e#5734#5735#0" expanded="true" />
+                <element signature="e#5769#5770#0" expanded="true" />
+                <element signature="e#5822#5823#0" expanded="true" />
+                <element signature="e#5870#5871#0" expanded="true" />
+                <element signature="e#5925#5926#0" expanded="true" />
+                <element signature="e#5990#5991#0" expanded="true" />
+                <element signature="e#6020#6021#0" expanded="true" />
+                <element signature="e#6046#6047#0" expanded="true" />
+                <element signature="e#6084#6085#0" expanded="true" />
+                <element signature="e#6114#6115#0" expanded="true" />
+                <element signature="e#6153#6154#0" expanded="true" />
+                <element signature="e#6188#6189#0" expanded="true" />
+                <element signature="e#6244#6245#0" expanded="true" />
+                <element signature="e#6292#6293#0" expanded="true" />
+                <element signature="e#6327#6328#0" expanded="true" />
+                <element signature="e#6358#6359#0" expanded="true" />
+                <element signature="e#6406#6407#0" expanded="true" />
+                <element signature="e#6446#6447#0" expanded="true" />
+                <element signature="e#6499#6500#0" expanded="true" />
+                <element signature="e#6530#6531#0" expanded="true" />
+                <element signature="e#6596#6597#0" expanded="true" />
+                <element signature="e#6636#6637#0" expanded="true" />
+                <element signature="e#6672#6673#0" expanded="true" />
+                <element signature="e#6703#6704#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,8 +131,24 @@
     <findStrings>
       <find>updateListInfo</find>
       <find>list_command</find>
-      <find>updateListSeeds</find>
       <find>INFO</find>
+      <find>Syste,</find>
+      <find>System</find>
+      <find>lis</find>
+      <find>get</find>
+      <find>getAvailableSegments</find>
+      <find>token</find>
+      <find>P2P STARTED</find>
+      <find>Length</find>
+      <find>setFileCheckSum</find>
+      <find>printUpdatedUsersSegments</find>
+      <find>usersSegments</find>
+      <find>/ava</find>
+      <find>updateListSeeds</find>
+      <find>share</find>
+      <find>updateListS</find>
+      <find>addUserSegments</find>
+      <find>Crypto</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,10 +167,23 @@
         <option value="$PROJECT_DIR$/src/INFO.java" />
         <option value="$PROJECT_DIR$/src/FileINFO.java" />
         <option value="$PROJECT_DIR$/src/ConnectionHandler.java" />
-        <option value="$PROJECT_DIR$/Files/torrentFiles/libssh.torrent.txt" />
         <option value="$PROJECT_DIR$/src/Client.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/BitTracker.java" />
+        <option value="$PROJECT_DIR$/Files/torrentFiles/libssh.torrent.txt" />
+        <option value="$PROJECT_DIR$/src/Server/Crypto.java" />
+        <option value="$PROJECT_DIR$/src/Client/Crypto.java" />
+        <option value="$PROJECT_DIR$/Files/torrentFiles/libssh2.torrent.txt" />
+        <option value="$PROJECT_DIR$/Files/torrentFiles/memreduct.torrent.txt" />
+        <option value="$PROJECT_DIR$/src/Server/Algo.java" />
+        <option value="$PROJECT_DIR$/src/test.java" />
+        <option value="$PROJECT_DIR$/src/Client/FileINFO.java" />
+        <option value="$PROJECT_DIR$/src/Client/Client.java" />
+        <option value="$PROJECT_DIR$/src/Server/BitTracker.java" />
+        <option value="$PROJECT_DIR$/src/main.java" />
+        <option value="$PROJECT_DIR$/src/Server/ConnectionHandler.java" />
+        <option value="$PROJECT_DIR$/src/Server/UserINFO.java" />
+        <option value="$PROJECT_DIR$/src/Client/ClientP2P.java" />
+        <option value="$PROJECT_DIR$/src/Client/MyFile.java" />
       </list>
     </option>
   </component>
@@ -170,7 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -188,15 +217,21 @@
               <item name="bit_torrent" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bit_torrent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bit_torrent" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1614967498191" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1615246488161" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RecentsManager">
@@ -204,11 +239,12 @@
       <recent name="C:\Users\mrrom\Desktop\bit_torrent\bit_torrent\bit_torrent\Files" />
       <recent name="C:\Users\mrrom\Desktop\bit_torrent\bit_torrent\bit_torrent\usersfiles" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mrrom\Desktop\bit_torrent\bit_torrent\bit_torrent\usersfiles" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Client" />
+      <recent name="" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -244,9 +280,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="bit_torrent" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.main" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Application.main2" />
       </list>
     </recent_temporary>
@@ -268,7 +312,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15191898" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13539445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -277,8 +321,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8869936" visible="true" weight="0.2112676" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49973276" weight="0.34019503" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8869936" visible="true" weight="0.30877572" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49973276" weight="0.40303358" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -286,6 +330,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.1130064" side_tool="true" weight="0.31960997" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49973276" weight="0.32899022" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32827735" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.20255864" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -323,18 +368,6 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout-to-restore>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/BitTracker.java</url>
-          <line>70</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../../../1PPJV2.0/src/zaj22/Administrator.java">
@@ -378,13 +411,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/openedPort.txt" />
     <entry file="file://$PROJECT_DIR$/src/main2.java" />
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Optional.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/StringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
@@ -402,94 +428,234 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Files/torrentFiles/libssh.torrent.txt">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/File.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="1017" column="19" selection-start-line="1017" selection-start-column="19" selection-end-line="1017" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="2893" column="25" selection-start-line="2893" selection-start-column="25" selection-end-line="2893" selection-end-column="25" />
+          <folding>
+            <element signature="e#116031#116032#0" expanded="true" />
+            <element signature="e#116073#116074#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/receivedFiles/memreduct.exe.torrent.txt" />
+    <entry file="file://$PROJECT_DIR$/Files/receivedFiles/libssh22.dll.torrent.txt" />
+    <entry file="file://$PROJECT_DIR$/Files/receivedFiles/libssh2.dll.torrent.txt" />
+    <entry file="file://$PROJECT_DIR$/Files/torrentFiles/libssh.torrent.txt" />
+    <entry file="file://$PROJECT_DIR$/Files/torrentFiles/libssh2.torrent.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/torrentFiles/libssh22.torrent.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/torrentFiles/memreduct.torrent.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
+          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ConnectionHandler.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/function/Predicate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="-439">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="516" selection-start-line="516" selection-end-line="516" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/function/BiConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/util/Optional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="145" column="13" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Algo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/nio/ByteBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="381" column="29" selection-start-line="381" selection-start-column="29" selection-end-line="381" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/BufferedReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="563" column="24" selection-start-line="563" selection-start-column="18" selection-end-line="563" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Files/torrentFiles/sql.torrent.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1547#1548#0" expanded="true" />
-            <element signature="e#1579#1580#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#1671#1672#0" expanded="true" />
-            <element signature="e#1710#1711#0" expanded="true" />
-            <element signature="e#1745#1746#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FileINFO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserINFO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#950#951#0" expanded="true" />
-            <element signature="e#979#980#0" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1065#1066#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1187#1188#0" expanded="true" />
-            <element signature="e#1231#1232#0" expanded="true" />
-            <element signature="e#1269#1270#0" expanded="true" />
-            <element signature="e#1303#1304#0" expanded="true" />
-            <element signature="e#1357#1358#0" expanded="true" />
-            <element signature="e#1403#1404#0" expanded="true" />
-            <element signature="e#1458#1459#0" expanded="true" />
-            <element signature="e#1495#1496#0" expanded="true" />
-            <element signature="e#1550#1551#0" expanded="true" />
-            <element signature="e#1587#1588#0" expanded="true" />
-            <element signature="e#1631#1632#0" expanded="true" />
-            <element signature="e#1666#1667#0" expanded="true" />
-            <element signature="e#1708#1709#0" expanded="true" />
-            <element signature="e#1743#1744#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
-            <element signature="e#1817#1818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BitTracker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="92" column="33" selection-start-line="92" selection-start-column="16" selection-end-line="92" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1363#1364#0" expanded="true" />
+            <element signature="e#1424#1425#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="493">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/UserINFO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#925#926#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/ConnectionHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="88" column="35" lean-forward="true" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3212#3213#0" expanded="true" />
+            <element signature="e#3254#3255#0" expanded="true" />
+            <element signature="e#3293#3294#0" expanded="true" />
+            <element signature="e#3328#3329#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159">
+          <caret line="159" column="156" lean-forward="true" selection-start-line="159" selection-start-column="156" selection-end-line="159" selection-end-column="156" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6790#6791#0" expanded="true" />
+            <element signature="e#6846#6847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/ClientP2P.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2754">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/MyFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/BitTracker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4000">
+          <caret line="163" column="30" selection-start-line="163" selection-start-column="30" selection-end-line="163" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5893#5894#0" expanded="true" />
+            <element signature="e#5933#5934#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/Crypto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/FileINFO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5734#5735#0" expanded="true" />
+            <element signature="e#5769#5770#0" expanded="true" />
+            <element signature="e#5822#5823#0" expanded="true" />
+            <element signature="e#5870#5871#0" expanded="true" />
+            <element signature="e#5925#5926#0" expanded="true" />
+            <element signature="e#5990#5991#0" expanded="true" />
+            <element signature="e#6020#6021#0" expanded="true" />
+            <element signature="e#6046#6047#0" expanded="true" />
+            <element signature="e#6084#6085#0" expanded="true" />
+            <element signature="e#6114#6115#0" expanded="true" />
+            <element signature="e#6153#6154#0" expanded="true" />
+            <element signature="e#6188#6189#0" expanded="true" />
+            <element signature="e#6244#6245#0" expanded="true" />
+            <element signature="e#6292#6293#0" expanded="true" />
+            <element signature="e#6327#6328#0" expanded="true" />
+            <element signature="e#6358#6359#0" expanded="true" />
+            <element signature="e#6406#6407#0" expanded="true" />
+            <element signature="e#6446#6447#0" expanded="true" />
+            <element signature="e#6499#6500#0" expanded="true" />
+            <element signature="e#6530#6531#0" expanded="true" />
+            <element signature="e#6596#6597#0" expanded="true" />
+            <element signature="e#6636#6637#0" expanded="true" />
+            <element signature="e#6672#6673#0" expanded="true" />
+            <element signature="e#6703#6704#0" expanded="true" />
           </folding>
         </state>
       </provider>
