@@ -85,11 +85,13 @@ public class ClientP2P {
                        System.out.println("P2P Socket[" + socket.getLocalPort() + "] Downloaded segment " + str[2] + " : Successfully");
                        clientReference.checkIfFileInfoExistInPossesed(this.clientReference.downloadingFile.getFileCheckSum());
                        clientReference.addToPossesedFilesInfo(this.clientReference.downloadingFile.getFileCheckSum() ,Integer.valueOf(str[2]),Crypto.getSHA1((new ByteArrayInputStream(bytes))) );
+                       clientReference.addDownloadedBytes(Integer.valueOf(str[2]),bytes,this.clientReference.downloadingFile.getFileCheckSum());
 
                        if(clientReference.canCreateAFile(this.clientReference.downloadingFile.getFileCheckSum()))
                        {
                            System.out.println("P2P Socket[" + socket.getLocalPort() + "] : Ready to create file ");
-                           clientReference.printPossessedFiles();
+                           clientReference.createFile(this.clientReference.downloadingFile.getFileCheckSum());
+                        //   clientReference.printPossessedFiles();
                            clientReference.share_FIle(clientReference.getFileFullName(this.clientReference.downloadingFile.getFileCheckSum()),false);
                        }else{
                            System.out.println("P2P Socket[" + socket.getLocalPort() + "] : Not ready to create file [Not enough segments ]");

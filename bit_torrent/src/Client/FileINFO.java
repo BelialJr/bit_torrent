@@ -17,14 +17,16 @@ public class FileINFO
     private String fileName;
     private String fileNameFull;
     private String fileSize;
+    private int fileSizeInBytes;
     private int fileSegments;
     private String fileSegmentSize;
     private HashMap<Integer,String> segments; // #Number //Segemnt CheckSum
-
+    private HashMap<Integer,byte[]> segmentsBytes; // #Number //Segemnt bytes
 
 
     public FileINFO() {
         this.segments = new HashMap<>();
+        this.segmentsBytes = new HashMap<>();
     }
 
     public static FileINFO coppyHeaders(FileINFO coppyFile){
@@ -36,11 +38,16 @@ public class FileINFO
         result.setFileSize(coppyFile.getFileSize());
         result.setFileSegments(coppyFile.getFileSegments());
         result.setFileSegmentSize(coppyFile.getFileSegmentSize());
+        result.setFileSizeInBytes(coppyFile.getFileSizeInBytes());
         return result;
     }
 
     public  static boolean canCreateAFile(FileINFO fileINFO) {
         return fileINFO.getFileSegments() == fileINFO.getSegments().keySet().size();
+    }
+
+    public void addSegmentBytes(Integer segment, byte[] bytes) {
+        segmentsBytes.put(segment,bytes);
     }
 
 
@@ -56,6 +63,7 @@ public class FileINFO
         int segmentSize = (int)Math.pow(10,digitsCount-1);                // result size =  multiplier * segmentSize
         this.fileSegmentSize = String.valueOf(segmentSize);
         this.fileSegments = multiplier;
+        this.fileSizeInBytes = fileContent.length;
 
         int bytesLeft = fileContent.length;
         int coppyIndex = 0;
@@ -84,6 +92,7 @@ public class FileINFO
                 bw.write("FILE_CHECK_SUM = " +fileCheckSum +"\n");
                 bw.write("FILE_NAME = " +fileNameFull +"\n");
                 bw.write("FILE_SIZE = " +fileSize +"\n");
+                bw.write("FILE_SIZE_BYTES = " +fileSizeInBytes +"\n");
                 bw.write("FILE_SEGMENTS = " +fileSegments +"\n");
                 bw.write("SEGMENT_SIZE = " +fileSegmentSize +"bytes" +"\n");
                 for(Map.Entry<Integer,String> line: segments.entrySet())
@@ -125,6 +134,8 @@ public class FileINFO
                 fileINFO.setFileSegments(str[2]);
             }else if(str[0].equals("SEGMENT_SIZE")) {
                 fileINFO.setFileSegmentSize(str[2]);
+            }else if(str[0].equals("FILE_SIZE_BYTES")){
+                fileINFO.setFileSizeInBytes(Integer.parseInt(str[2]));
             }else if(str[0].equals("#")){
                 fileINFO.getSegments().put(Integer.valueOf(str[1]),str[3]);
             }
@@ -140,6 +151,7 @@ public class FileINFO
                 "-fileName='" + fileName + '\'' + '\n'+
                 "-fileNameFull='" + fileNameFull + '\'' + '\n'+
                 "-fileSize='" + fileSize + '\'' + '\n'+
+                "-fileSizeInBytes='" + fileSizeInBytes + '\'' + '\n'+
                 "-fileSegments=" + fileSegments + '\n'+
                 "-fileSegmentSize=" + fileSegmentSize + '\n'+
                 "-segments=\n" + segments.entrySet()
@@ -149,8 +161,13 @@ public class FileINFO
     }
 
 
+    public HashMap<Integer, byte[]> getSegmentsBytes() {
+        return segmentsBytes;
+    }
 
-
+    public void setSegmentsBytes(HashMap<Integer, byte[]> segmentsBytes) {
+        this.segmentsBytes = segmentsBytes;
+    }
 
     public int getFileSegments() {
         return fileSegments;
@@ -219,6 +236,14 @@ public class FileINFO
 
     public void setFileNameFull(String fileNameFull) {
         this.fileNameFull = fileNameFull;
+    }
+
+    public int getFileSizeInBytes() {
+        return fileSizeInBytes;
+    }
+
+    public void setFileSizeInBytes(int fileSizeInBytes) {
+        this.fileSizeInBytes = fileSizeInBytes;
     }
 }
 

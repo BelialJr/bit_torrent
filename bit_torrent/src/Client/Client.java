@@ -9,9 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Client {
     private final String downloadFrom = "Files/usersFiles/";
@@ -52,6 +50,15 @@ public class Client {
         send("/share " + filename +" " + fileSize+ " " + checkSum);
         if(createTorrentFile && fileINFO != null)
             fileINFO.generateFile(torrentFilePath);
+    }
+
+    public void showBytes(){
+        System.out.println("-------------------------------------------------------------------");
+        FileINFO fileINFO = possessedFiles.stream().filter(e->e.getFileCheckSum().equals(downloadingFile.getFileCheckSum())).findFirst().get();
+        for(Map.Entry<Integer,byte[]> map :fileINFO.getSegmentsBytes().entrySet() )
+        {
+            System.out.println(map.getKey()+" : " + Crypto.getSHA1(new ByteArrayInputStream(map.getValue())));
+        }
     }
 
     public void startListening() throws IOException {
@@ -158,6 +165,52 @@ public class Client {
     }
     public synchronized String getFileSegments(String fileCheckSum) {
        return  possessedFiles.stream().filter(e->e.getFileCheckSum().equals(fileCheckSum)).findFirst().get().getSegments().keySet().toString().replace(" ","");
+    }
+
+    public synchronized void createFile(String fileCheckSum) {
+        FileINFO fileINFO =  this.possessedFiles.stream().filter(e->e.getFileCheckSum().equals(fileCheckSum)).findFirst().get();
+
+
+            Map<Integer,byte[]> segmentsSorted = new LinkedHashMap<>();
+
+            fileINFO.getSegmentsBytes().entrySet().stream()
+                    .sorted(Map.Entry.comparingByKey())
+                    .forEach(e->segmentsSorted.put(e.getKey(),e.getValue()));
+
+            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+            for( Map.Entry<Integer,byte[]> map : segmentsSorted.entrySet())
+            {
+                try {
+                    byteArray.write(map.getValue());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            byte[] result = byteArray.toByteArray();
+            System.out.println("RESULT SIZE " + result.length + " WOULD BE WRITTEN  " + fileINFO.getFileSizeInBytes());
+            ByteArrayOutputStream bytesFile = new ByteArrayOutputStream();
+
+        try {
+            FileOutputStream stream = new FileOutputStream(new File(downloadTo + fileINFO.getFileNameFull()));
+            for (int i = 0; i < fileINFO.getFileSizeInBytes(); i++) {
+                stream.write(result[i]);
+                bytesFile.write(result[i]);
+            }
+            stream.flush();
+            stream.close();
+            String checkSum = Crypto.getSHA1(downloadTo+fileINFO.getFileNameFull());
+            System.out.println("---CREATED FILE : CheckSum = " + checkSum);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //showBytes();
+    }
+
+    public synchronized void addDownloadedBytes(Integer segment, byte[] bytes, String fileCheckSum) {
+
+        this.possessedFiles.stream().filter(e->e.getFileCheckSum().equals(fileCheckSum)).findFirst().get().addSegmentBytes(segment,bytes);
     }
 
 
