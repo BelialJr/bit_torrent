@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Comparator;
+
 
 public class main {
-
+    //szyfrowanie + port changing;
     public static void main(String[] args) {
 
         handleFiles();
@@ -77,9 +77,6 @@ public class main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-     //   file.createNewFile();
 
     }
 }

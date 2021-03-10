@@ -2,13 +2,9 @@ package Client;
 
 
 import java.io.*;
-import java.math.BigInteger;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.security.DigestInputStream;
-import java.security.MessageDigest;
 import java.util.*;
 
 public class Client {
